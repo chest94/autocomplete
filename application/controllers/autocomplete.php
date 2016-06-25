@@ -9,19 +9,16 @@ class Autocomplete extends CI_Controller {
     }
 
     function get_datos() {
-        //$keyword = $this->input->get('keyword');
-        $q = $_POST['data']['q'];
-        
-        //$id = $this->input->post('producto');
         
         $query_data = $this->db->query('SELECT ID_PRODUCTO as id, NOMBRE_PRODUCTO as text '
-                . 'FROM productos ');
+                . 'FROM PRODUCTOS');
                 //. 'where ID_PRODUCTO = '. $id);
 
         foreach ($query_data->result_array() as $row) {
             $datos[] = $row;
         }
-        echo json_encode(array('q' => $q, 'results' => $datos));
+        
+        echo json_encode($datos);
     }
 
     function get() {
